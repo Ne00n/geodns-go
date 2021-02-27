@@ -16,7 +16,7 @@ import (
 func defaultOptions() {
 	config.ConfigLocation = flag.String("c", "/etc/geodns/config.yml", "the location of the configuration file of DNS server")
 	config.GeoLiteDBLocation = flag.String("g", "/etc/geodns/geolite2-city.mmdb", "the location of GeoLite2/GeoIP2 city MMDB")
-	config.Port = flag.Int("p", 8053, "which port to listen")
+	config.Port = flag.Int("p", 53, "which port to listen")
 	config.Debug = flag.Bool("D", false, "enable debug mode to print out more information while running the server")
 	config.ListenAddress = flag.String("a", "127.0.0.1", "which address to listen for the request")
 }
