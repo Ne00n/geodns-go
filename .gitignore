@@ -17,6 +17,3 @@
 # Don't add binary into git
 geodns-go
 geodns
-
-# Ignore config
-config.yml
