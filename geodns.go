@@ -4,6 +4,7 @@ import (
 	"flag"
 	"log"
 	"os"
+	"path/filepath"
 	"os/signal"
 	"syscall"
 
@@ -14,7 +15,14 @@ import (
 )
 
 func defaultOptions() {
-	config.ConfigLocation = flag.String("c", "/etc/geodns/config.yml", "the location of the configuration file of DNS server")
+	ex, err := os.Executable()
+	if err != nil {
+			panic(err)
+	}
+
+	exPath := filepath.Dir(ex)
+
+	config.ConfigLocation = flag.String("c", exPath+"/config.yml", "the location of the configuration file of DNS server")
 	config.GeoLiteDBLocation = flag.String("g", "/etc/geodns/geolite2-city.mmdb", "the location of GeoLite2/GeoIP2 city MMDB")
 	config.Port = flag.Int("p", 53, "which port to listen")
 	config.Debug = flag.Bool("D", false, "enable debug mode to print out more information while running the server")
