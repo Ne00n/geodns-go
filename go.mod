@@ -1,4 +1,4 @@
-module github.com/TsundereChen/geodns-go
+module github.com/Ne00n/geodns-go
 
 go 1.14
 
