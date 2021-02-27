@@ -4,8 +4,8 @@ import (
 	"net"
 	"strings"
 
-	"github.com/TsundereChen/geodns-go/pkg/config"
-	"github.com/TsundereChen/geodns-go/pkg/handler"
+	"github.com/Ne00n/geodns-go/pkg/config"
+	"github.com/Ne00n/geodns-go/pkg/handler"
 	"github.com/miekg/dns"
 )
 

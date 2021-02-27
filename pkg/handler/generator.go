@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"github.com/TsundereChen/geodns-go/pkg/config"
-	rrLib "github.com/TsundereChen/geodns-go/pkg/rr"
+	"github.com/Ne00n/geodns-go/pkg/config"
+	rrLib "github.com/Ne00n/geodns-go/pkg/rr"
 	"github.com/miekg/dns"
 	"log"
 )

@@ -8,9 +8,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/TsundereChen/geodns-go/pkg/config"
-	"github.com/TsundereChen/geodns-go/pkg/query"
-	server "github.com/TsundereChen/geodns-go/pkg/serve"
+	"github.com/Ne00n/geodns-go/pkg/config"
+	"github.com/Ne00n/geodns-go/pkg/query"
+	server "github.com/Ne00n/geodns-go/pkg/serve"
 	"github.com/oschwald/geoip2-golang"
 )
 

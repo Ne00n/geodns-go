@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"github.com/TsundereChen/geodns-go/pkg/config"
-	"github.com/TsundereChen/geodns-go/pkg/fetch"
+	"github.com/Ne00n/geodns-go/pkg/config"
+	"github.com/Ne00n/geodns-go/pkg/fetch"
 	"github.com/miekg/dns"
 	"log"
 	"net"
