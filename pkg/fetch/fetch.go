@@ -25,6 +25,10 @@ func FetchDefaultValue(rrData interface{}) (value string) {
 	return rrData.(map[interface{}]interface{})["default"].(string)
 }
 
+func FetchTtlValue(rrData interface{}) (value int) {
+	return rrData.(map[interface{}]interface{})["ttl"].(int)
+}
+
 func FetchDNSType(requestType string) (rrType uint16) {
 	switch strings.ToUpper(requestType) {
 	case "A":

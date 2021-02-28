@@ -5,13 +5,13 @@ import (
 	"net"
 )
 
-func TypeA(fqdn string, value string) (Rr *dns.A) {
+func TypeA(fqdn string, value string, ttl uint32) (Rr *dns.A) {
 	Rr = new(dns.A)
 	Rr.Hdr = dns.RR_Header{
 		Name:   fqdn,
 		Rrtype: dns.TypeA,
 		Class:  dns.ClassINET,
-		Ttl:    3600}
+		Ttl:    ttl}
 	Rr.A = net.ParseIP(value)
 	return Rr
 }

@@ -12,8 +12,10 @@ example.com:
     A:
       ns1:
         default: '1.1.1.1'
+        ttl: 3600
       ns2:
         default: '2.2.2.2'
+        ttl: 3600
       a:
         default: '127.1.1.1'
         map: primary

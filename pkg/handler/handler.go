@@ -21,7 +21,9 @@ func DNSHandler(fqdn string, questionType uint16, sourceAddress net.IP, IPv4 boo
 		log.Printf("handler.DNSHandler handling request %s, question type %s\n", fqdn, dns.TypeToString[questionType])
 	}
 	var value string
+	var ttl uint32
 	value = ""
+	ttl = 3600
 
 	//Go through each domain in config file
 	for domain := range config.ConfigMap {
@@ -39,14 +41,16 @@ func DNSHandler(fqdn string, questionType uint16, sourceAddress net.IP, IPv4 boo
 				//If the map is not empty check for subdomain otherwise check for any
 				if recordMatch, ok := typeMap[subdomain]; ok {
 					value = fetch.FetchDefaultValue(recordMatch)
+					ttl =  uint32(fetch.FetchTtlValue(recordMatch))
 				} else {
 					if recordMatch, ok := typeMap["any"]; ok {
 						value = fetch.FetchDefaultValue(recordMatch)
+						ttl =  uint32(fetch.FetchTtlValue(recordMatch))
 					}
 				}
 			}
 		}
 	}
-	rr = RrGenerator(questionType, fqdn, value)
+	rr = RrGenerator(questionType, fqdn, value, ttl)
 	return rr
 }

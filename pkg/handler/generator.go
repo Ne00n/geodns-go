@@ -7,13 +7,13 @@ import (
 	"log"
 )
 
-func RrGenerator(requestType uint16, fqdn string, value string) (rr dns.RR) {
+func RrGenerator(requestType uint16, fqdn string, value string, ttl uint32) (rr dns.RR) {
 	switch requestType {
 	case dns.TypeA:
 		if *(config.Debug) == true {
 			log.Printf("Generate A record for %s\n", value)
 		}
-		rr = rrLib.TypeA(fqdn, value)
+		rr = rrLib.TypeA(fqdn, value, ttl)
 		break
 	case dns.TypeAAAA:
 		if *(config.Debug) == true {
