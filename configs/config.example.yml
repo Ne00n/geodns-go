@@ -5,7 +5,7 @@ example.com:
     retry: 300
     expire: 3600000
     minimum: 3600
-  rr:
+  records:
     a:
       type: 'A'
       default: '127.0.0.1'
@@ -42,7 +42,3 @@ example.com:
           value:
             - 127.13.23.25: 25
             - 127.23.13.75: 75
-regions:
-  'TW': 'tw'
-  'US': 'us'
-  'JP': 'jp'

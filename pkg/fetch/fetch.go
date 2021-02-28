@@ -10,7 +10,7 @@ var (
 )
 
 func FetchRR(config interface{}) (rrData map[interface{}]interface{}) {
-	return config.(map[interface{}]interface{})["rr"].(map[interface{}]interface{})
+	return config.(map[interface{}]interface{})["records"].(map[interface{}]interface{})
 }
 
 func FetchSubDomainName(fqdn string, domain string) (subDomain string) {
