@@ -19,19 +19,19 @@ func RrGenerator(requestType uint16, fqdn string, value string, ttl uint32) (rr 
 		if *(config.Debug) == true {
 			log.Printf("Generate AAAA record for %s\n", value)
 		}
-		rr = rrLib.TypeAAAA(fqdn, value)
+		rr = rrLib.TypeAAAA(fqdn, value, ttl)
 		break
 	case dns.TypeCNAME:
 		if *(config.Debug) == true {
 			log.Printf("Generate CNAME record for %s\n", value)
 		}
-		rr = rrLib.TypeCNAME(fqdn, value)
+		rr = rrLib.TypeCNAME(fqdn, value, ttl)
 		break
 	case dns.TypeTXT:
 		if *(config.Debug) == true {
 			log.Printf("Generate TXT record for %s\n", value)
 		}
-		rr = rrLib.TypeTXT(fqdn, value)
+		rr = rrLib.TypeTXT(fqdn, value, ttl)
 		break
 	default:
 		rr = new(dns.NULL)
