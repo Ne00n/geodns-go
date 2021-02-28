@@ -50,7 +50,3 @@ func DNSHandler(fqdn string, questionType uint16, sourceAddress net.IP, IPv4 boo
 	rr = RrGenerator(questionType, fqdn, value)
 	return rr
 }
-
-func typeChecker(rrType string, questionType uint16) (res bool) {
-	return rrType == dns.TypeToString[questionType]
-}
