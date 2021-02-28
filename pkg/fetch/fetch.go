@@ -9,6 +9,32 @@ var (
 	ConfigMap map[string]interface{}
 )
 
+func FetchValue(regions interface{}, recordMatch interface{}, country string, region string) (result string) {
+	if region != "" || country != "" {
+		var mapName string
+		mapName = FetchMapName(recordMatch)
+		regions := regions.(map[interface{}]interface{})
+		//Check if the regionMap does exist
+		if pops, ok := regions[mapName]; ok {
+			pops := pops.(map[interface{}]interface{})
+			//Check if the region exist in regionMap
+			if value, ok := pops[region]; ok {
+				result = value.(string)
+			} else if value, ok := pops[country]; ok {
+				result = value.(string)
+			}
+		}
+	}
+	if result == "" {
+		result = FetchDefaultValue(recordMatch)
+	}
+	return result
+}
+
+func FetchMapName(config interface{}) (value string) {
+	return config.(map[interface{}]interface{})["map"].(string)
+}
+
 func FetchRR(config interface{}) (rrData map[interface{}]interface{}) {
 	return config.(map[interface{}]interface{})["records"].(map[interface{}]interface{})
 }
