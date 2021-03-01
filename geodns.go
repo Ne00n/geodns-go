@@ -7,11 +7,12 @@ import (
 	"path/filepath"
 	"os/signal"
 	"syscall"
+	"strconv"
 
 	"github.com/Ne00n/geodns-go/pkg/config"
 	"github.com/Ne00n/geodns-go/pkg/query"
-	server "github.com/Ne00n/geodns-go/pkg/serve"
 	"github.com/oschwald/geoip2-golang"
+	"github.com/miekg/dns"
 )
 
 func defaultOptions() {
@@ -29,6 +30,13 @@ func defaultOptions() {
 	config.ListenAddress = flag.String("a", "127.0.0.1", "which address to listen for the request")
 }
 
+func Serve(port *int, connType string, address *string) {
+	srv := &dns.Server{Addr: *address + ":" + strconv.Itoa(*port), Net: connType}
+	if err := srv.ListenAndServe(); err != nil {
+		log.Fatalf("Failed to set %s listener %s\n", connType, err.Error())
+	}
+}
+
 func main() {
 	defaultOptions()
 	flag.Parse()
@@ -43,8 +51,8 @@ func main() {
 
 	log.Printf("Starting DNS server...\n")
 
-	go server.Serve(config.Port, "tcp", config.ListenAddress)
-	go server.Serve(config.Port, "udp", config.ListenAddress)
+	go Serve(config.Port, "tcp", config.ListenAddress)
+	go Serve(config.Port, "udp", config.ListenAddress)
 
 	sig := make(chan os.Signal)
 	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
