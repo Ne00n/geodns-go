@@ -12,7 +12,7 @@ import (
 func RegisterDomain() {
 	var domainList = config.FetchDomain(config.ConfigMap)
 	for i := range domainList {
-		if domainList[i] != "maps" {
+		if domainList[i] != "regions" {
 			dns.HandleFunc(domainList[i], HandleFunction)
 		}
 	}

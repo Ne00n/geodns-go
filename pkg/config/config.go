@@ -26,7 +26,7 @@ func FetchConfigMap(c *string) {
 
 func FetchDomain(configMap map[string]interface{}) (domainList []string) {
 	for domain := range configMap {
-		if domain != "maps" {
+		if domain != "regions" {
 			domainList = append(domainList, domain)
 		}
 	}
